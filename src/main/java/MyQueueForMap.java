@@ -30,7 +30,7 @@ public class MyQueueForMap<K, V> {
         }
         this.lastElement = myNodeMap;
         size++;
-        System.out.println("Елемент добавлен в очередь");
+        System.out.println("Елемент добавлен в HashMap");
     }
 
     public void remove(K key) {
