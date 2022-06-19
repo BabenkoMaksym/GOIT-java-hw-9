@@ -30,13 +30,10 @@ public class MyQueueForMap<K, V> {
         }
         this.lastElement = myNodeMap;
         size++;
-        System.out.println("Елемент добавлен в HashMap");
     }
 
     public void remove(K key) {
-        if (size == 0) {
-            System.out.println("Елемента с ключем " + key + " не существует");
-        } else {
+        if (size != 0) {
             if (firstElement.key.equals(key)) {
                 firstElement.value = null;
                 firstElement = firstElement.next;
@@ -57,7 +54,6 @@ public class MyQueueForMap<K, V> {
                 removeElement.value = null;
             }
             size--;
-            System.out.println("Елемент c ключем " + key + " был удален из HashMap.");
         }
     }
 
@@ -84,9 +80,7 @@ public class MyQueueForMap<K, V> {
     }
 
     public MyNodeMap<K, V> get(K key) {
-        if (size == 0) {
-            System.out.println("Елемента с таким ключем не существует");
-        } else {
+        if (size != 0) {
             if (firstElement.key.equals(key)) {
                 return firstElement;
             } else {

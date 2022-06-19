@@ -16,14 +16,11 @@ public class MyQueue<E> implements MyQueueCommand<E> {
         }
         this.lastElement = newMyNode;
         size++;
-        System.out.println("Елемент добавлен в очередь");
     }
 
     @Override
     public void remove(int index) {
-        if (index >= size) {
-            System.out.println("Елемента под индексом " + index + " не существует");
-        } else {
+        if (index >= 0 && index < size) {
             if (index == 0) {
                 firstElement.item = null;
                 firstElement = firstElement.next;
@@ -43,7 +40,6 @@ public class MyQueue<E> implements MyQueueCommand<E> {
                 removeElement.item = null;
             }
             size--;
-            System.out.println("Елемент под индексом " + index + " был удален из очереди.");
         }
     }
 
@@ -61,16 +57,16 @@ public class MyQueue<E> implements MyQueueCommand<E> {
     }
 
     @Override
-    public MyNode<E> peek() {
-        return firstElement;
+    public E peek() {
+        return firstElement.item;
     }
 
     @Override
-    public MyNode<E> poll() {
+    public E poll() {
         MyNode<E> pollElement = firstElement;
         firstElement = firstElement.next;
         size--;
-        return pollElement;
+        return pollElement.item;
     }
 
 

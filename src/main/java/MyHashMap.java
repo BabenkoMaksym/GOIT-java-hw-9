@@ -28,9 +28,7 @@ public class MyHashMap<K, V> implements MyHashMapCommand<K, V> {
 
     @Override
     public void remove(K key) {
-        if (myHashMap[index(key)] == null) {
-            System.out.println("Елемента с ключем " + key + " не существует");
-        } else {
+        if (myHashMap[index(key)] != null) {
             myHashMap[index(key)].remove(key);
         }
     }
@@ -38,7 +36,6 @@ public class MyHashMap<K, V> implements MyHashMapCommand<K, V> {
     @Override
     public void clear() {
         myHashMap = new MyQueueForMap[userCapacity];
-        System.out.println("HashMap очищена");
     }
 
     @Override
@@ -54,9 +51,7 @@ public class MyHashMap<K, V> implements MyHashMapCommand<K, V> {
 
     @Override
     public V get(K key) {
-        if (myHashMap[index(key)] == null) {
-            System.out.println("Елемента с ключем " + key + " не существует");
-        } else {
+        if (myHashMap[index(key)] != null && myHashMap[index(key)].size() != 0) {
             return (V) myHashMap[index(key)].get(key).value;
         }
         return null;

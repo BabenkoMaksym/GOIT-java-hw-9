@@ -17,19 +17,13 @@ public class MyLinkedList<E> implements MyLinkedListCommand<E> {
             this.lastElement = newMyNode;
         }
         size++;
-        System.out.println("Елемент добавлен. Размер MyLinkedList = " + size );
-
     }
 
     @Override
     public void remove(int index) {
         MyNode element = firstElement;
-        if (index > size - 1) {
-            System.out.println("Искомого елемента не существует");
-        } else {
-            if (index == 0) {
-
-            } else {
+        if (index >= 0 && index < size) {
+            if (index != 0) {
                 for (int i = 0; i < index; i++) {
                     element = element.next;
                 }
@@ -40,7 +34,6 @@ public class MyLinkedList<E> implements MyLinkedListCommand<E> {
             element.prev = null;
             element.item = null;
             size--;
-            System.out.println("Елемент под индексом " + index + " удален. Размер MyLinkedList = " + size);
         }
     }
 
@@ -57,7 +50,6 @@ public class MyLinkedList<E> implements MyLinkedListCommand<E> {
             element = next;
             }
             size = 0;
-            System.out.println("MyLinkedList очищен");
         }
     }
 

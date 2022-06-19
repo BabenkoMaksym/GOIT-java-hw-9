@@ -13,27 +13,20 @@ public class MyStack<E> implements MyStackCommand<E> {
         }
         this.lastElement = newMyNode;
         size++;
-        System.out.println("Елемент добавлен в очередь" + "   " + newMyNode.item);
-
     }
 
     @Override
     public void remove(int index) {
-        if (index >= size) {
-            System.out.println("Елемента под индексом " + index + " не существует");
-        } else {
+        if (index >= 0 && index < size) {
             element = lastElement;
             if (index == 0 && size == 1) {
-                System.out.println("11111");
                 element.item = null;
                 lastElement = null;
                 element = null;
             } else if (size - index == 1) {
-                System.out.println("22222");
                 lastElement.item = null;
                 lastElement = lastElement.next;
             } else {
-                System.out.println("33333");
                 for (int i = 1; i < size - index -1; i++) {
                     element = element.next;
                 }
@@ -43,7 +36,6 @@ public class MyStack<E> implements MyStackCommand<E> {
                 temp.next = null;
             }
             size--;
-            System.out.println("Елемент под индексом " + index + " был удален из очереди.");
         }
 
     }
@@ -61,34 +53,17 @@ public class MyStack<E> implements MyStackCommand<E> {
     }
 
     @Override
-    public MyNode<E> peek() {
-        return lastElement;
+    public E peek() {
+        return lastElement.item;
     }
 
-    @Override
-    public MyNode<E> pop() {
+    public E pop() {
         MyNode<E> popElement = lastElement;
         lastElement = lastElement.next;
         size--;
-        return popElement;
+        return popElement.item;
     }
 
-    @Override
-    public String toString() {
-        MyNode sss;
-        StringBuilder sb = new StringBuilder();
-        sb.append("MyStack:\n");
-        sb.append(lastElement.item);
-        sb.append("\n");
-        sss = lastElement;
-        for (int i = 1; i < size; i++) {
-            sss = sss.next;
-            sb.append(sss.item);
-            sb.append("\n");
-        }
-        return sb.toString();
-
-    }
 }
 
 
