@@ -9,7 +9,7 @@ public class MyQueueForMap<K, V> {
             if (firstElement.key.equals(key)) {
                 firstElement.value = value;
                 return;
-            } else {
+            } else if (size > 1) {
                 element = firstElement;
                 for (int i = 1; i < size; i++) {
                     element = element.next;
@@ -21,14 +21,14 @@ public class MyQueueForMap<K, V> {
             }
         }
 
-        MyNodeMap<K, V> myNodeMap = new MyNodeMap<K, V>(key, value, null);
+        MyNodeMap<K, V> myNodeMap = new MyNodeMap<>(key, value, null);
         if (size == 0) {
             myNodeMap.next = myNodeMap;
             this.firstElement = myNodeMap;
         } else {
             lastElement.next = myNodeMap;
         }
-        this.lastElement = myNodeMap;
+        lastElement = myNodeMap;
         size++;
     }
 

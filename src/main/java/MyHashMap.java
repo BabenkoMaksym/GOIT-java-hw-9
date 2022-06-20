@@ -41,7 +41,7 @@ public class MyHashMap<K, V> implements MyHashMapCommand<K, V> {
     @Override
     public int size() {
         int size = 0;
-        for (int i = 0; i < userCapacity - 1; i++) {
+        for (int i = 0; i < userCapacity; i++) {
             if (myHashMap[i] != null) {
                 size += myHashMap[i].size();
             }
@@ -58,6 +58,6 @@ public class MyHashMap<K, V> implements MyHashMapCommand<K, V> {
     }
 
     private int index(K key) {
-        return key.hashCode() % userCapacity;
+        return Math.abs(key.hashCode() % userCapacity);
     }
 }
